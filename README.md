@@ -115,14 +115,44 @@ INFO     root:vagrant_test.py:17 <testinfra.host.Host ansible://server2> is runn
 ========================================================================= 2 passed in 1.98s =========================================================================
 ```
 
-# Code Structure
-Thes test in exercise 3 showed how we can run a unit test on each vagrant vm. Now we will dive into the parts of the code.
+After the tests have run, we also get an html report [vagrant_test.html](vagrant_test.html)
 
-Like any Python program we can import any libraries we need
-```javascript {.line-numbers}
-import logging
-import testinfra
-import pytest
-import pytest_check as check
-import requests
+# Code Structure
+The test in exercise 3 showed how we can run a unit test on each vagrant vm. Now we will dive into the parts of the code.
+
+Like any Python program we can import any libraries we need. Lines 1 until 4 are needed by testinfra, this will import the libraries for logging, unit testing and testinfra.
+
+Line 5 is not needed by testinfra, but to illustrate that we can import any library we need. For testing url's for example we can import the python requests library.
+
+Line 7 and 8 and will set up our basic logger, we can use the logger to print out any output we need.
+
+Line 10 is the test function in which the logic is described for our unit test. Note that every test function should start with **test_** in order to be executed as a unit test.
+
+Lines 12 until 14 are calling the pytest_check and testinfra libraries. These will check the host information and return True or False to the variables.
+
+In Lines 16 until 19 the information is returned back to the logger. If all of the variables are true, then the test has passed and we can return an INFO with a descriptive text. If one of the variables is false, we return an ERROR.
+
+```python
+1. import logging
+2. import testinfra
+3. import pytest
+4. import pytest_check as check
+5. import requests
+6.
+7. logging.basicConfig(level=logging.ERROR)
+8. logger = logging.getLogger()
+9.
+10. def test_os_type(host):
+11.     """Check that we are running at minimum CentOS 7"""
+12.     os_type = check.is_true(host.system_info.type == "linux")
+13.     os_distro = check.is_true(host.system_info.distribution == "centos")
+14.     os_release = check.is_true(host.system_info.release == "7")
+15.
+16.     if os_type and os_distro and os_release:
+17.         logger.info(f"{host} is running linux centos 7")
+18.     else:
+19.         logger.error(f"{host} is not running linux centos 7")
 ```
+
+# Exercise 4: Test if openssh is installed
+For this exercise we want to if the package **openssh-server** is installed on the vm's. Explore the package module of testinfra and create a new test file in [exercise4/vagrant_openssh_test.py](exercise4/vagrant_openssh_test.py)
