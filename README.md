@@ -29,7 +29,7 @@ There are 2 vm's defined inside [Vagrantfile](./Vagrantfile) which we will use f
 vagrant up
 ```
 
-# Exercise 2: Setup Ansible inventory
+# Exercise 3: Setup Ansible inventory
 Testinfra can use multiple methods to connect to servers where the unit tests should run. During these excercises Ansible will be used. Similar to Ansible, we need to define our inventory with servers.
 Edit [inventories/vagrant.ini](./inventories/vagrant.ini) and fill in the details about the 2 vm's defined in the [Vagrantfile](./Vagrantfile).
 
@@ -57,7 +57,7 @@ server2 | SUCCESS => {
 }
 ```
 
-# Exercise 3: Write a first unit test
+# Exercise 4: Write a first unit test
 For Vagrant we are using CentOS 7 as a base image, we will write a test case that verifies that the vm is CentOS version 7.8.
 
 Checking system information can be done using the SystemInfo module (https://testinfra.readthedocs.io/en/latest/modules.html#systeminfo).
@@ -154,5 +154,5 @@ In Lines 16 until 19 the information is returned back to the logger. If all of t
 19.         logger.error(f"{host} is not running linux centos 7")
 ```
 
-# Exercise 4: Test if openssh is installed
+# Exercise 5: Test if openssh is installed
 For this exercise we want to if the package **openssh-server** is installed on the vm's. Explore the package module of testinfra [https://testinfra.readthedocs.io/en/latest/modules.html#package](https://testinfra.readthedocs.io/en/latest/modules.html#package) and create a new test function in [exercise/vagrant_test.py](exercise/vagrant_test.py)
