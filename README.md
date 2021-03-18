@@ -156,3 +156,9 @@ In Lines 16 until 19 the information is returned back to the logger. If all of t
 
 # Exercise 5: Test if openssh is installed
 For this exercise we want to if the package **openssh-server** is installed on the vm's. Explore the package module of testinfra [https://testinfra.readthedocs.io/en/latest/modules.html#package](https://testinfra.readthedocs.io/en/latest/modules.html#package) and create a new test function in [exercise/vagrant_test.py](exercise/vagrant_test.py)
+
+When the function is implemented, run the unit tests and verify that the new test has also executed.
+
+```bash
+pipenv run py.test -v --html=vagrant_test.html --self-contained-html --ansible-inventory=inventories/vagrant.ini.answer --connection=ansible exercise/vagrant_test.py --capture sys -rPs
+```
