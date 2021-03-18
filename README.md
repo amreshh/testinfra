@@ -62,7 +62,7 @@ For Vagrant we are using CentOS 7 as a base image, we will write a test case tha
 
 Checking system information can be done using the SystemInfo module (https://testinfra.readthedocs.io/en/latest/modules.html#systeminfo).
 
-Create a file in [exercise3/vagrant_test.py](exercise3/vagrant_test.py) with the following contents:
+Create a file in [exercise/vagrant_test.py](exercise/vagrant_test.py) with the following contents:
 
 ```python
 import logging
@@ -89,17 +89,17 @@ def test_os_type(host):
 Now we can run the unit test by executing the following command in the root of the project.
 
 ```bash
-pipenv run py.test -v --html=vagrant_test.html --self-contained-html --ansible-inventory=inventories/vagrant.ini.answer --connection=ansible exercise3/vagrant_test.py --capture sys -rPs
+pipenv run py.test -v --html=vagrant_test.html --self-contained-html --ansible-inventory=inventories/vagrant.ini.answer --connection=ansible exercise/vagrant_test.py --capture sys -rPs
 ```
 
 The output will be similar below when all the test cases have passed
 
 ```bash
-exercise3/vagrant_test.py::test_os_type[ansible://server1] 
+exercise/vagrant_test.py::test_os_type[ansible://server1] 
 --------------------------------------------------------------------------- live log call ---------------------------------------------------------------------------
 2021-03-18 13:41:34 [    INFO] <testinfra.host.Host ansible://server1> is running linux centos 7 (vagrant_test.py:17)
 PASSED                                                                                                                                                        [ 50%]
-exercise3/vagrant_test.py::test_os_type[ansible://server2] 
+exercise/vagrant_test.py::test_os_type[ansible://server2] 
 --------------------------------------------------------------------------- live log call ---------------------------------------------------------------------------
 2021-03-18 13:41:35 [    INFO] <testinfra.host.Host ansible://server2> is running linux centos 7 (vagrant_test.py:17)
 PASSED                                                                                                                                                        [100%]
@@ -155,4 +155,4 @@ In Lines 16 until 19 the information is returned back to the logger. If all of t
 ```
 
 # Exercise 4: Test if openssh is installed
-For this exercise we want to if the package **openssh-server** is installed on the vm's. Explore the package module of testinfra and create a new test file in [exercise4/vagrant_openssh_test.py](exercise4/vagrant_openssh_test.py)
+For this exercise we want to if the package **openssh-server** is installed on the vm's. Explore the package module of testinfra [https://testinfra.readthedocs.io/en/latest/modules.html#package](https://testinfra.readthedocs.io/en/latest/modules.html#package) and create a new test function in [exercise/vagrant_test.py](exercise/vagrant_test.py)
