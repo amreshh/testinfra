@@ -89,7 +89,7 @@ def test_os_type(host):
 Now we can run the unit test by executing the following command in the root of the project.
 
 ```bash
-pipenv run py.test -v --html=vagrant_test.html --self-contained-html --ansible-inventory=inventories/vagrant.ini.answer --connection=ansible exercise/vagrant_test.py --capture sys -rPs
+pipenv run py.test -v --html=vagrant_test.html --self-contained-html --ansible-inventory=inventories/vagrant.ini --connection=ansible exercise/vagrant_test.py --capture sys -rPs
 ```
 
 The output will be similar below when all the test cases have passed
