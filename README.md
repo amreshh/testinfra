@@ -160,5 +160,5 @@ For this exercise we want to if the package **openssh-server** is installed on t
 When the function is implemented, run the unit tests and verify that the new test has also executed.
 
 ```bash
-pipenv run py.test -v --html=vagrant_test.html --self-contained-html --ansible-inventory=inventories/vagrant.ini.answer --connection=ansible exercise/vagrant_test.py --capture sys -rPs
+pipenv run py.test -v --html=vagrant_test.html --self-contained-html --ansible-inventory=inventories/vagrant.ini --connection=ansible exercise/vagrant_test.py --capture sys -rPs
 ```
