@@ -58,7 +58,7 @@ server2 | SUCCESS => {
 ```
 
 # Exercise 4: Write a first unit test
-For Vagrant we are using CentOS 7 as a base image, we will write a test case that verifies that the vm is CentOS version 7.8.
+For Vagrant we are using CentOS 7 as a base image, we will write a test case that verifies that the vm is CentOS version 7.
 
 Checking system information can be done using the SystemInfo module (https://testinfra.readthedocs.io/en/latest/modules.html#systeminfo).
 
@@ -118,7 +118,7 @@ INFO     root:vagrant_test.py:17 <testinfra.host.Host ansible://server2> is runn
 After the tests have run, we also get an html report [vagrant_test.html](vagrant_test.html)
 
 # Code Structure
-The test in exercise 3 showed how we can run a unit test on each vagrant vm. Now we will dive into the parts of the code.
+The test in exercise 4 showed how we can run a unit test on each vagrant vm. Now we will dive into the parts of the code.
 
 Like any Python program we can import any libraries we need. Lines 1 until 4 are needed by testinfra, this will import the libraries for logging, unit testing and testinfra.
 
